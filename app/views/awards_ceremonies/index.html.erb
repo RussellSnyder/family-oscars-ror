@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Awards Ceremonies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @awards_ceremonies.each do |awards_ceremony| %>
+      <tr>
+        <td><%= awards_ceremony.name %></td>
+        <td><%= awards_ceremony.description %></td>
+        <td><%= link_to 'Show', awards_ceremony %></td>
+        <td><%= link_to 'Edit', edit_awards_ceremony_path(awards_ceremony) %></td>
+        <td><%= link_to 'Destroy', awards_ceremony, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Awards Ceremony', new_awards_ceremony_path %>

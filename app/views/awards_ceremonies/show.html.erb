@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @awards_ceremony.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @awards_ceremony.description %>
+</p>
+
+<%= link_to 'Edit', edit_awards_ceremony_path(@awards_ceremony) %> |
+<%= link_to 'Back', awards_ceremonies_path %>

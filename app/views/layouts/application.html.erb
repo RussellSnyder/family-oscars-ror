@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FamilyOscars</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="container-fluid">  
+      <nav class="navbar navbar-expand-sm navbar-light">
+        <a class="navbar-brand" href="#">Family Oscars</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <%= fa_icon "bars" %>
+          </button>
+          <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="nav navbar-nav navbar-logo mx-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Dropdown
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>
+            </ul>
+            <ul class="navbar-nav pull-sm-right">
+              <% if user_signed_in? %>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <%= fa_icon "user" %> <strong><%= current_user.email %></strong>
+                </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">                    
+                    <%= link_to 'Edit profile', edit_user_registration_path, :class => 'dropdown-item' %>
+                    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'dropdown-item' %>
+                  </div>
+                </li>
+              <% else %>
+                <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+                <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+    </div>
+    <%= yield %>
+  </body>
+</html>
