@@ -28,8 +28,8 @@ class FamiliesController < ApplicationController
 
     respond_to do |format|
       if @family.save
-        format.html { redirect_to @family, notice: 'Family was successfully created.' }
-        format.json { render :show, status: :created, location: @family }
+        format.html { redirect_to families_path, notice: 'Family was successfully created.' }
+        format.json { render :show, status: :created, location: @family }        
       else
         format.html { render :new }
         format.json { render json: @family.errors, status: :unprocessable_entity }
@@ -42,7 +42,7 @@ class FamiliesController < ApplicationController
   def update
     respond_to do |format|
       if @family.update(family_params)
-        format.html { redirect_to @family, notice: 'Family was successfully updated.' }
+        format.html { redirect_to families_path, notice: 'Family was successfully updated.' }
         format.json { render :show, status: :ok, location: @family }
       else
         format.html { render :edit }
@@ -69,6 +69,6 @@ class FamiliesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def family_params
-      params.require(:family).permit(:name, :description)
+      params.require(:family).permit(:name, :description, :image)
     end
 end

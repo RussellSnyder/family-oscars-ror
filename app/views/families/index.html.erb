@@ -1,29 +1,34 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Families</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @families.each do |family| %>
-      <tr>
-        <td><%= family.name %></td>
-        <td><%= family.description %></td>
-        <td><%= link_to 'Show', family %></td>
-        <td><%= link_to 'Edit', edit_family_path(family) %></td>
-        <td><%= link_to 'Destroy', family, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="container">
+  <h1>Families</h1>
+  <div class="row">  
+    <% @families.each do |family| %>    
+      <div class="col-md-6">
+        <div class="card">
+          <%= image_tag(family.image, :class => "card-img-top mx-auto d-block", :style => "max-height: 200px; width: auto") %>
+          <div class="card-body">
+            <%= link_to(family) do %>
+              <h5><%= family.name %> <i class="fa fa-external-link"></i></h5>
+            <% end %>
+            created <%= time_ago_in_words(family.created_at) %> ago
+            <p class="card-text"><%= truncate(family.description, length:100) %></p>
+          </div>
+          <div class="card-footer">
+          <div class="row">
+            <div class="col-md-6 p-1">
+              <%= link_to 'Edit', edit_family_path(family), class: "btn btn-warning fa fa-pencil w-100" %>
+            </div>
+            <div class="col-md-6 p-1">
+              <%= link_to 'Destroy', family, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-right w-100 btn btn-danger fa fa-trash" %>
+            </div>
+          </div>    
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
 
-<br>
 
 <%= link_to 'New Family', new_family_path %>
