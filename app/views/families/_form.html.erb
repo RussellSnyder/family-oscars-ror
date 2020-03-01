@@ -2,13 +2,13 @@
 <%= simple_form_for(@family) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <% if @family.image.attached? %>
-      <%# TODO have this render when uploaded %>
-      current photo
-      <%= image_tag(@family.image, :class => "img-fluid", :style => "max-width: 300px") %>
-    <% end %>
-    <%= f.input :image %>
-    <%= f.button :submit, :class => "btn btn-primary" %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <% if @family.image.attached? %>
+    <%# TODO have this render when uploaded %>
+    current photo
+    <%= image_tag(@family.image, :class => "img-fluid", :style => "max-width: 300px") %>
+  <% end %>
+  <%= f.input :image %>
+  <%= f.button :submit, :class => "btn btn-primary" %>
 <% end %>

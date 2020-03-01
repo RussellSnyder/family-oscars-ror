@@ -69,6 +69,6 @@ class AwardsCeremoniesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def awards_ceremony_params
-      params.require(:awards_ceremony).permit(:name, :description)
+      params.require(:awards_ceremony).permit(:name, :description, :image)
     end
 end
