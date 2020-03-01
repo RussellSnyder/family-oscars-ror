@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :categories do
+    resources :nominations
+  end 
   resources :families
   resources :awards_ceremonies
   devise_for :users

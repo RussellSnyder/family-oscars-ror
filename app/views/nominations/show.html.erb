@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @nomination.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @nomination.description %>
+</p>
+
+<p>
+  <strong>Vote count:</strong>
+  <%= @nomination.vote_count %>
+</p>
+
+<%= link_to 'Edit', edit_nomination_path(@nomination) %> |
+<%= link_to 'Back', nominations_path %>
